@@ -20,10 +20,16 @@ let library = document.getElementById("library");
 
 let menuOnBooksPage = document.getElementById("books-menu");
 
+let removeBtn;
+
 let booksDisplay;
 
 form.style.display = "none";
 menuOnBooksPage.style.display = "none";
+
+removeBtn.addEventListener("click", () => {
+    removeBook();
+});
 
 booksBtn.addEventListener("click", () => {
     showBooks();
@@ -142,16 +148,37 @@ function showBooks() {
     for (x of myLibrary) {
         let bookCard = document.createElement("div")
         bookCard.classList.add("card")
-        fillBookCard(bookCard, i)
+        fillBookCard.call(myLibrary[i], bookCard, i)
         booksDisplay.appendChild(bookCard)
         i++;
     }
 }
 
 function fillBookCard(bookCard, i) {
-    let authorText = document.createElement("div")
-    authorText.textContent = myLibrary[i].author;
-    bookCard.appendChild(authorText)
+    arr = [this.author, this.title, this.pages]
+
+    for (elem of arr) {
+        let someText = document.createElement("div")
+        someText.textContent = elem
+        bookCard.appendChild(someText)
+    }
+
+    let readText = document.createElement("div")
+    if (this.read == true) {
+        readText.textContent = "You have read this book.";
+    }
+    else {
+        readText.textContent = "You haven't read this book.";
+    }
+    bookCard.appendChild(readText)
+
+    removeBtn = document.createElement("button");
+
+    removeBtn.textContent = "Remove"
+
+    bookCard.appendChild(removeBtn)
+
+    bookCard.dataset.arrayIndex = i;
 }
 
 function showBooksMenu() {
@@ -164,4 +191,8 @@ function hideBooksMenu() {
     menuOnBooksPage.style.display = "none";
     booksBtn.style.display = "block";
     newBook.style.display = "block";
+}
+
+function removeBook() {
+    
 }
