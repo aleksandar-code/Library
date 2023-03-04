@@ -29,9 +29,4 @@ form.style.display = "none";
 
 submitButton.onclick = () => addBookToLibrary();
 
-
 newBook.onclick = () => showForm();
-
-
-
-
