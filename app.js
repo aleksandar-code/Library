@@ -16,14 +16,22 @@ let booksDisplay = document.getElementById("books-display");
 
 let menu = document.getElementById("menu");
 
+let cancelForm = document.getElementById("cancel-form");
+
 books.onclick = () => displayBooks();
 
 form.style.display = "none";
 
 newBook.addEventListener("click", () => {
-    showForm();
     hideMenu();
+    hideBooks();
+    showForm();
 });
+
+cancelForm.addEventListener("click", () => {
+    hideForm();
+    showMenu();
+})
 
 
 submitButton.addEventListener("click", (e) => {
@@ -31,6 +39,7 @@ submitButton.addEventListener("click", (e) => {
         addBookToLibrary(e);
         resetForm();
         hideForm();
+        showMenu();
     }
 });
 
@@ -100,6 +109,10 @@ function hideMenu() {
 }
 
 function showMenu() {
-    menu.style.display = "block";
+    menu.style.display = "flex";
+}
+
+function hideBooks() {
+    booksDisplay.style.display = "none";
 }
 
