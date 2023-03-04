@@ -7,6 +7,8 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 form {
@@ -31,14 +33,18 @@ fieldset span {
 
 #menu {
     background-color: blueviolet;
-    height: 100px;
+    height: 400px;
+    width: 400px;
     display: flex;
     align-items: center;
+    gap: 20px;
+    justify-content: center;
 }
 
 #menu button {
-    height: 20px;
-    width: 100px;
+    height: 50px;
+    width: 150px;
+    font-size: 1rem;
 }
 
 #books-display {

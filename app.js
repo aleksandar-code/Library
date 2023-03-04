@@ -20,6 +20,8 @@ let library = document.getElementById("library");
 
 let menuOnBooksPage = document.getElementById("books-menu");
 
+let booksDisplay;
+
 form.style.display = "none";
 menuOnBooksPage.style.display = "none";
 
@@ -36,7 +38,6 @@ menuOnBooksPage.addEventListener("click", () => {
 
 newBook.addEventListener("click", () => {
     hideMenu();
-    hideBooks();
     showForm();
 });
 
@@ -88,22 +89,6 @@ function isFormComplete() {
     }
     return true
 }
-let booksDisplay;
-function showBooks() {
-    if (myLibrary.length < 1) return
-
-    booksDisplay = document.createElement("div");
-
-    booksDisplay.setAttribute("id", "books-display");
-
-    library.appendChild(booksDisplay);
-    for (x of myLibrary) {
-        let bookCard = document.createElement("div")
-        bookCard.classList.add("card")
-        booksDisplay.appendChild(bookCard)
-    }
-    
-}
 
 function resetForm() {
     author.value = "";
@@ -132,6 +117,21 @@ function hideBooks() {
     booksDisplay.remove();
 }
 
+function showBooks() {
+    if (myLibrary.length < 1) return
+
+    booksDisplay = document.createElement("div");
+
+    booksDisplay.setAttribute("id", "books-display");
+
+    library.appendChild(booksDisplay);
+    for (x of myLibrary) {
+        let bookCard = document.createElement("div")
+        bookCard.classList.add("card")
+        booksDisplay.appendChild(bookCard)
+    }
+}
+
 function showBooksMenu() {
     menuOnBooksPage.style.display = "block";
     booksBtn.style.display = "none";
@@ -140,6 +140,6 @@ function showBooksMenu() {
 
 function hideBooksMenu() {
     menuOnBooksPage.style.display = "none";
-    booksBtn.style.display = "flex";
-    newBook.style.display = "flex";
+    booksBtn.style.display = "block";
+    newBook.style.display = "block";
 }
