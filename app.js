@@ -155,8 +155,8 @@ function addRemoveBtns() {
     let removeBtns = document.getElementsByClassName("remove-button");
 
     for (btn of removeBtns) {
-        btn.addEventListener("click", () => {
-            removeBook();
+        btn.addEventListener("click", (e) => {
+            removeBook(e.composedPath()[1]);
         });
     }
 }
@@ -203,6 +203,8 @@ function hideBooksMenu() {
     newBook.style.display = "block";
 }
 
-function removeBook() {
-    console.log("Book removed");
+function removeBook(card) {
+    let index = card.dataset.arrayIndex
+    card.remove();
+    myLibrary.splice(index, 1);
 }
