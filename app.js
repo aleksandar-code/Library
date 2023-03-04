@@ -14,11 +14,17 @@ let books = document.getElementById("books");
 
 let booksDisplay = document.getElementById("books-display");
 
+let menu = document.getElementById("menu");
+
 books.onclick = () => displayBooks();
 
-newBook.onclick = () => showForm();
-
 form.style.display = "none";
+
+newBook.addEventListener("click", () => {
+    showForm();
+    hideMenu();
+});
+
 
 submitButton.addEventListener("click", (e) => {
     if (isFormComplete() == true) {
@@ -88,3 +94,12 @@ function showForm() {
     form.style.display = "block";
     newBook.style.display = "none";
 }
+
+function hideMenu() {
+    menu.style.display = "none";
+}
+
+function showMenu() {
+    menu.style.display = "block";
+}
+
