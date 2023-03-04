@@ -20,16 +20,12 @@ let library = document.getElementById("library");
 
 let menuOnBooksPage = document.getElementById("books-menu");
 
-let removeBtn;
-
 let booksDisplay;
 
 form.style.display = "none";
 menuOnBooksPage.style.display = "none";
 
-removeBtn.addEventListener("click", () => {
-    removeBook();
-});
+
 
 booksBtn.addEventListener("click", () => {
     showBooks();
@@ -152,6 +148,17 @@ function showBooks() {
         booksDisplay.appendChild(bookCard)
         i++;
     }
+    addRemoveBtns();
+}
+
+function addRemoveBtns() {
+    let removeBtns = document.getElementsByClassName("remove-button");
+
+    for (btn of removeBtns) {
+        btn.addEventListener("click", () => {
+            removeBook();
+        });
+    }
 }
 
 function fillBookCard(bookCard, i) {
@@ -172,7 +179,9 @@ function fillBookCard(bookCard, i) {
     }
     bookCard.appendChild(readText)
 
-    removeBtn = document.createElement("button");
+    let removeBtn = document.createElement("button");
+
+    removeBtn.classList.add("remove-button")
 
     removeBtn.textContent = "Remove"
 
@@ -180,6 +189,7 @@ function fillBookCard(bookCard, i) {
 
     bookCard.dataset.arrayIndex = i;
 }
+
 
 function showBooksMenu() {
     menuOnBooksPage.style.display = "block";
@@ -194,5 +204,5 @@ function hideBooksMenu() {
 }
 
 function removeBook() {
-    
+    console.log("Book removed");
 }
