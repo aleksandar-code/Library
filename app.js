@@ -1,7 +1,7 @@
 let myLibrary = [];
 let author = document.getElementById("author");
 let title = document.getElementById("title");
-let pages = document.getElementById("pages");
+let genre = document.getElementById("genre");
 let read = document.getElementById("read");
 
 let newBook = document.getElementById("new-book");
@@ -11,8 +11,6 @@ let form = document.getElementsByTagName("form")[0];
 let submitButton = document.querySelector('button[type=submit]');
 
 let booksBtn = document.getElementById("books");
-
-let menu = document.getElementById("menu");
 
 let cancelForm = document.getElementById("cancel-form");
 
@@ -64,18 +62,18 @@ submitButton.addEventListener("click", (e) => {
 });
 
 class Book {
-    constructor(author, title, pages, read) {
+    constructor(author, title, genre, read) {
         this.author = author;
         this.title = title;
-        this.pages = pages;
+        this.genre = genre;
         this.read = read;
     }
 }
 
 function initialBooks() {
-    let book1 = new Book("J. K. Rowling", "Harry Potter", "500", false)
-    let book2 = new Book("Plato", "The Republic", "300", false)
-    let book3 = new Book("Marcus Aurelius", "Meditations", "500", false)
+    let book1 = new Book("J. K. Rowling", "Harry Potter", "Epic", false)
+    let book2 = new Book("Plato", "The Republic", "Politics", false)
+    let book3 = new Book("Marcus Aurelius", "Meditations", "Stoicism", false)
 
     myLibrary.push(book1)
     myLibrary.push(book2)
@@ -99,13 +97,13 @@ function addBookToLibrary(e) {
 function createBook() {
     const a = author.value
     const b = title.value
-    const c = pages.value
+    const c = genre.value
     const d = read.checked
     return new Book(a, b, c, d);
 }
 
 function isFormComplete() {
-    arr = [author, title, pages]
+    arr = [author, title, genre]
 
     for(x of arr) {
         if (x.value === '')  {
@@ -118,7 +116,7 @@ function isFormComplete() {
 function resetForm() {
     author.value = "";
     title.value = "";
-    pages.value = "";
+    genre.value = "";
     read.checked = false;
 }
 
@@ -187,7 +185,7 @@ function addChangeReadStatusBtn() {
 }
 
 function fillBookCard(bookCard, i) {
-    arr = [this.author, this.title, this.pages]
+    arr = [this.author, this.title, this.genre]
 
     for (elem of arr) {
         let someText = document.createElement("div")
