@@ -42,14 +42,14 @@ menuOnBooksPage.addEventListener("click", () => {
 });
 
 newBook.addEventListener("click", () => {
-    hideMenu();
+    hideNewBook();
     showForm();
 });
 
 cancelForm.addEventListener("click", (e) => {
     resetForm();
     hideForm();
-    showMenu();
+    showNewBook();
     e.preventDefault();
 });
 
@@ -58,7 +58,7 @@ submitButton.addEventListener("click", (e) => {
         addBookToLibrary(e);
         resetForm();
         hideForm();
-        showMenu();
+        showNewBook();
         checkIfAnyBooks();
     }
 });
@@ -130,12 +130,15 @@ function showForm() {
     form.style.display = "block";
 }
 
-function hideMenu() {
-    menu.style.display = "none";
+function hideNewBook() {
+    newBook.style.display = "none";
+    booksBtn.style.display = "none";
 }
 
-function showMenu() {
-    menu.style.display = "flex";
+function showNewBook() {
+    newBook.style.display = "block";
+    booksBtn.style.display = "block";
+
 }
 
 function hideBooks() {
