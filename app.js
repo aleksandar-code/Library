@@ -25,7 +25,9 @@ let booksDisplay;
 form.style.display = "none";
 menuOnBooksPage.style.display = "none";
 
-
+window.onload = () => {
+    checkIfAnyBooks();
+}
 
 booksBtn.addEventListener("click", () => {
     showBooks();
@@ -34,7 +36,8 @@ booksBtn.addEventListener("click", () => {
 
 menuOnBooksPage.addEventListener("click", () => {
     hideBooks();
-    hideBooksMenu()
+    hideBooksMenu();
+    checkIfAnyBooks();
 });
 
 
@@ -56,6 +59,7 @@ submitButton.addEventListener("click", (e) => {
         resetForm();
         hideForm();
         showMenu();
+        checkIfAnyBooks();
     }
 });
 
@@ -79,6 +83,15 @@ function initialBooks() {
 }
 
 initialBooks();
+
+function checkIfAnyBooks() {
+    if (myLibrary.length == 0) {
+        booksBtn.style.display = "none";
+    }
+    else {
+        booksBtn.style.display = "block";
+    }
+}
 
 function addBookToLibrary(e) {
     myLibrary.push(createBook());
@@ -132,8 +145,6 @@ function hideBooks() {
 }
 
 function showBooks() {
-    if (myLibrary.length < 1) return
-
     booksDisplay = document.createElement("div");
 
     booksDisplay.setAttribute("id", "books-display");
