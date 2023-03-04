@@ -239,8 +239,6 @@ function changeReadStatus(card) {
     let index = card.dataset.arrayIndex
     let boolean = myLibrary[index].read
     myLibrary[index].read = (boolean == true) ? false : true
-    console.log(myLibrary[index]);
-
 }
 
 initialBooks();
