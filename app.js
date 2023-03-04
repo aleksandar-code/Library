@@ -9,8 +9,17 @@ class Book {
     }
 }
 
-function addBookToLibrary() {
-    
+function addBookToLibrary(e) {
+    myLibrary.push(createBook());
+    e.preventDefault();
+}
+
+function createBook() {
+    let author = document.getElementById("author").value;
+    let title = document.getElementById("title").value;
+    let pages = document.getElementById("pages").value;
+    let read = document.getElementById("read").checked;
+    return new Book(author, title, pages, read);
 }
 
 function showForm() {
@@ -27,6 +36,6 @@ let submitButton = document.querySelector('button[type=submit]');
 
 form.style.display = "none";
 
-submitButton.onclick = () => addBookToLibrary();
+submitButton.onclick = (e) => addBookToLibrary(e);
 
 newBook.onclick = () => showForm();
