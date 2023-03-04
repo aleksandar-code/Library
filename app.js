@@ -10,17 +10,29 @@ let form = document.getElementsByTagName("form")[0];
 
 let submitButton = document.querySelector('button[type=submit]');
 
-let books = document.getElementById("books");
-
-let booksDisplay = document.getElementById("books-display");
+let booksBtn = document.getElementById("books");
 
 let menu = document.getElementById("menu");
 
 let cancelForm = document.getElementById("cancel-form");
 
-books.onclick = () => displayBooks();
+let library = document.getElementById("library");
+
+let menuOnBooksPage = document.getElementById("books-menu");
 
 form.style.display = "none";
+menuOnBooksPage.style.display = "none";
+
+booksBtn.addEventListener("click", () => {
+    showBooks();
+    showBooksMenu();
+});
+
+menuOnBooksPage.addEventListener("click", () => {
+    hideBooks();
+    hideBooksMenu()
+});
+
 
 newBook.addEventListener("click", () => {
     hideMenu();
@@ -31,7 +43,7 @@ newBook.addEventListener("click", () => {
 cancelForm.addEventListener("click", () => {
     hideForm();
     showMenu();
-})
+});
 
 
 submitButton.addEventListener("click", (e) => {
@@ -76,15 +88,21 @@ function isFormComplete() {
     }
     return true
 }
-
-function displayBooks() {
+let booksDisplay;
+function showBooks() {
     if (myLibrary.length < 1) return
-    books.style.display = "none";
+
+    booksDisplay = document.createElement("div");
+
+    booksDisplay.setAttribute("id", "books-display");
+
+    library.appendChild(booksDisplay);
     for (x of myLibrary) {
         let bookCard = document.createElement("div")
         bookCard.classList.add("card")
         booksDisplay.appendChild(bookCard)
     }
+    
 }
 
 function resetForm() {
@@ -96,12 +114,10 @@ function resetForm() {
 
 function hideForm() {
     form.style.display = "none";
-    newBook.style.display = "block";
 }
 
 function showForm() {
     form.style.display = "block";
-    newBook.style.display = "none";
 }
 
 function hideMenu() {
@@ -113,6 +129,17 @@ function showMenu() {
 }
 
 function hideBooks() {
-    booksDisplay.style.display = "none";
+    booksDisplay.remove();
 }
 
+function showBooksMenu() {
+    menuOnBooksPage.style.display = "block";
+    booksBtn.style.display = "none";
+    newBook.style.display = "none";
+}
+
+function hideBooksMenu() {
+    menuOnBooksPage.style.display = "none";
+    booksBtn.style.display = "flex";
+    newBook.style.display = "flex";
+}
