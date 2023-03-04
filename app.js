@@ -41,9 +41,11 @@ newBook.addEventListener("click", () => {
     showForm();
 });
 
-cancelForm.addEventListener("click", () => {
+cancelForm.addEventListener("click", (e) => {
+    resetForm();
     hideForm();
     showMenu();
+    e.preventDefault();
 });
 
 
