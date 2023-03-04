@@ -1,10 +1,6 @@
 body {
     box-sizing: border-box;
     margin: 0;
-}
-
-#library {
-    height: 100vh;
     background-color: rgb(89, 159, 221);
 }
 
