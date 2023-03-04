@@ -15,9 +15,11 @@ newBook.onclick = () => showForm();
 form.style.display = "none";
 
 submitButton.addEventListener("click", (e) => {
-    addBookToLibrary(e);
-    resetForm();
-    hideForm();
+    if (isFormComplete() == true) {
+        addBookToLibrary(e);
+        resetForm();
+        hideForm();
+    }
 });
 
 
@@ -43,6 +45,17 @@ function createBook() {
     return new Book(a, b, c, d);
 }
 
+function isFormComplete() {
+    arr = [author, title, pages]
+
+    for(x of arr) {
+        if (x.value === '')  {
+            return false
+        }
+    }
+    return true
+}
+
 function resetForm() {
     author.value = "";
     title.value = "";
@@ -59,4 +72,3 @@ function showForm() {
     form.style.display = "block";
     newBook.style.display = "none";
 }
-
