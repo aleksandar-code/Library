@@ -18,3 +18,10 @@ fieldset span {
     display: flex;
     margin-top: 1rem;
 }
+
+.card {
+    background-color: brown;
+    border: yellow;
+    width: 200px;
+    height: 400px;
+}

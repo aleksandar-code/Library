@@ -10,6 +10,10 @@ let form = document.getElementsByTagName("form")[0];
 
 let submitButton = document.querySelector('button[type=submit]');
 
+let books = document.getElementById("books");
+
+books.onclick = () => displayBooks();
+
 newBook.onclick = () => showForm();
 
 form.style.display = "none";
@@ -54,6 +58,10 @@ function isFormComplete() {
         }
     }
     return true
+}
+
+function displayBooks() {
+    
 }
 
 function resetForm() {
