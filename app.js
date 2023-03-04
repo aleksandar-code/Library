@@ -25,6 +25,7 @@ let booksDisplay;
 form.style.display = "none";
 menuOnBooksPage.style.display = "none";
 
+
 window.onload = () => {
     checkIfAnyBooks();
 }
@@ -39,7 +40,6 @@ menuOnBooksPage.addEventListener("click", () => {
     hideBooksMenu();
     checkIfAnyBooks();
 });
-
 
 newBook.addEventListener("click", () => {
     hideMenu();
@@ -81,8 +81,6 @@ function initialBooks() {
     myLibrary.push(book2)
     myLibrary.push(book3)
 }
-
-initialBooks();
 
 function checkIfAnyBooks() {
     if (myLibrary.length == 0) {
@@ -160,6 +158,7 @@ function showBooks() {
         i++;
     }
     addRemoveBtns();
+    addChangeReadStatusBtn();
 }
 
 function addRemoveBtns() {
@@ -168,6 +167,18 @@ function addRemoveBtns() {
     for (btn of removeBtns) {
         btn.addEventListener("click", (e) => {
             removeBook(e.composedPath()[1]);
+        });
+    }
+}
+
+function addChangeReadStatusBtn() {
+    let readStatusBtns = document.getElementsByClassName("read-status");
+
+    for (btn of readStatusBtns) {
+        btn.addEventListener("click", (e) => {
+            changeReadStatus(e.composedPath()[1]);
+            hideBooks();
+            showBooks();
         });
     }
 }
@@ -192,15 +203,19 @@ function fillBookCard(bookCard, i) {
 
     let removeBtn = document.createElement("button");
 
+    let readStatusBtn = document.createElement("button");
+    
     removeBtn.classList.add("remove-button")
+    readStatusBtn.classList.add("read-status")
 
     removeBtn.textContent = "Remove"
+    readStatusBtn.textContent = "Read"
 
     bookCard.appendChild(removeBtn)
+    bookCard.appendChild(readStatusBtn)
 
     bookCard.dataset.arrayIndex = i;
 }
-
 
 function showBooksMenu() {
     menuOnBooksPage.style.display = "block";
@@ -219,3 +234,13 @@ function removeBook(card) {
     card.remove();
     myLibrary.splice(index, 1);
 }
+
+function changeReadStatus(card) {
+    let index = card.dataset.arrayIndex
+    let boolean = myLibrary[index].read
+    myLibrary[index].read = (boolean == true) ? false : true
+    console.log(myLibrary[index]);
+
+}
+
+initialBooks();
