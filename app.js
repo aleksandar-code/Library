@@ -1,4 +1,25 @@
 let myLibrary = [];
+let author = document.getElementById("author");
+let title = document.getElementById("title");
+let pages = document.getElementById("pages");
+let read = document.getElementById("read");
+
+let newBook = document.getElementById("new-book");
+
+let form = document.getElementsByTagName("form")[0];
+
+let submitButton = document.querySelector('button[type=submit]');
+
+newBook.onclick = () => showForm();
+
+form.style.display = "none";
+
+submitButton.addEventListener("click", (e) => {
+    addBookToLibrary(e);
+    resetForm();
+    hideForm();
+});
+
 
 class Book {
     constructor(author, title, pages, read) {
@@ -15,11 +36,23 @@ function addBookToLibrary(e) {
 }
 
 function createBook() {
-    let author = document.getElementById("author").value;
-    let title = document.getElementById("title").value;
-    let pages = document.getElementById("pages").value;
-    let read = document.getElementById("read").checked;
-    return new Book(author, title, pages, read);
+    const a = author.value
+    const b = title.value
+    const c = pages.value
+    const d = read.checked
+    return new Book(a, b, c, d);
+}
+
+function resetForm() {
+    author.value = "";
+    title.value = "";
+    pages.value = "";
+    read.checked = false;
+}
+
+function hideForm() {
+    form.style.display = "none";
+    newBook.style.display = "block";
 }
 
 function showForm() {
@@ -27,15 +60,3 @@ function showForm() {
     newBook.style.display = "none";
 }
 
-let newBook = document.getElementById("new-book");
-
-let form = document.getElementsByTagName("form")[0];
-
-let submitButton = document.querySelector('button[type=submit]');
-
-
-form.style.display = "none";
-
-submitButton.onclick = (e) => addBookToLibrary(e);
-
-newBook.onclick = () => showForm();
