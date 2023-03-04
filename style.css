@@ -29,6 +29,8 @@ fieldset span {
     border: 2px solid yellow;
     width: 200px;
     height: 400px;
+    color: white;
+    font-size: 1rem;
 }
 
 #menu {

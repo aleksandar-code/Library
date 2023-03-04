@@ -1,4 +1,4 @@
-let myLibrary = [1, 2, 3, 4];
+let myLibrary = [];
 let author = document.getElementById("author");
 let title = document.getElementById("title");
 let pages = document.getElementById("pages");
@@ -48,7 +48,6 @@ cancelForm.addEventListener("click", (e) => {
     e.preventDefault();
 });
 
-
 submitButton.addEventListener("click", (e) => {
     if (isFormComplete() == true) {
         addBookToLibrary(e);
@@ -58,7 +57,6 @@ submitButton.addEventListener("click", (e) => {
     }
 });
 
-
 class Book {
     constructor(author, title, pages, read) {
         this.author = author;
@@ -67,6 +65,18 @@ class Book {
         this.read = read;
     }
 }
+
+function initialBooks() {
+    let book1 = new Book("J. K. Rowling", "Harry Potter", "500", false)
+    let book2 = new Book("Plato", "The Republic", "300", false)
+    let book3 = new Book("Marcus Aurelius", "Meditations", "500", false)
+
+    myLibrary.push(book1)
+    myLibrary.push(book2)
+    myLibrary.push(book3)
+}
+
+initialBooks();
 
 function addBookToLibrary(e) {
     myLibrary.push(createBook());
@@ -127,11 +137,21 @@ function showBooks() {
     booksDisplay.setAttribute("id", "books-display");
 
     library.appendChild(booksDisplay);
+
+    let i = 0;
     for (x of myLibrary) {
         let bookCard = document.createElement("div")
         bookCard.classList.add("card")
+        fillBookCard(bookCard, i)
         booksDisplay.appendChild(bookCard)
+        i++;
     }
+}
+
+function fillBookCard(bookCard, i) {
+    let authorText = document.createElement("div")
+    authorText.textContent = myLibrary[i].author;
+    bookCard.appendChild(authorText)
 }
 
 function showBooksMenu() {
