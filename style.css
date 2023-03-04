@@ -4,10 +4,13 @@ body {
 }
 
 #library {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+form {
+    width: 200px;
 }
 
 fieldset span {
@@ -21,7 +24,25 @@ fieldset span {
 
 .card {
     background-color: brown;
-    border: yellow;
+    border: 2px solid yellow;
     width: 200px;
     height: 400px;
+}
+
+#menu {
+    background-color: blueviolet;
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+#menu button {
+    height: 20px;
+    width: 100px;
+}
+
+#books-display {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }

@@ -1,4 +1,4 @@
-let myLibrary = [];
+let myLibrary = [1, 2, 3, 4];
 let author = document.getElementById("author");
 let title = document.getElementById("title");
 let pages = document.getElementById("pages");
@@ -11,6 +11,8 @@ let form = document.getElementsByTagName("form")[0];
 let submitButton = document.querySelector('button[type=submit]');
 
 let books = document.getElementById("books");
+
+let booksDisplay = document.getElementById("books-display");
 
 books.onclick = () => displayBooks();
 
@@ -61,7 +63,13 @@ function isFormComplete() {
 }
 
 function displayBooks() {
-    
+    if (myLibrary.length < 1) return
+    books.style.display = "none";
+    for (x of myLibrary) {
+        let bookCard = document.createElement("div")
+        bookCard.classList.add("card")
+        booksDisplay.appendChild(bookCard)
+    }
 }
 
 function resetForm() {
