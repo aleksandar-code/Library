@@ -125,7 +125,7 @@ function hideForm() {
 }
 
 function showForm() {
-    form.style.display = "block";
+    form.style.display = "flex";
 }
 
 function hideNewBook() {
