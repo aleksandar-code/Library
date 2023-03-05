@@ -28,16 +28,49 @@ form {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
+}
+
+form button {
+    margin-right: 5px;
+    margin-left: 5px;
 }
 
 #main button {
     height: 50px;
     width: 150px;
     font-size: 1rem;
+    border-radius: 10px;
+    border: 1px solid rgb(35, 116, 187);
+    background-color: rgb(130, 180, 223);
+    transition: all ease 0.4s;
 }
 
+#main button:hover {
+    background-color: rgb(177, 197, 214);
+    transform: scale(1.05);
+}
 #books-display {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+}
+
+
+input[type=text] {
+    height: 30px;
+    width: 150px;
+    border-radius: 10px;
+    border: none;
+}
+
+input[type=text]:focus {
+    background-color: #b2a9b9;
+}
+
+label {
+    font-size: 1.2rem;
+    color: black;
+    font-style: italic;
+    margin: 10px 10px;
 }
